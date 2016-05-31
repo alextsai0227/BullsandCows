@@ -32,45 +32,74 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     // TODO: 1. decide the data type you want to use to store the answear
-    var answear: UInt16!
-    
+    var answear = ""
+    var guessArray: Array<String>= []
+    var name = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         setGame()
     }
-
+    
     func setGame() {
         generateAnswear()
         remainingTime = 9
         hintArray.removeAll()
         answearLabel.text = nil
         guessTextField.text = nil
+        self.remainingTimeLabel.textColor = UIColor.blackColor()
+        guessArray.removeAll()
     }
-    
-    func generateAnswear() {
+
+    func generateAnswear(){
+        answear = RefactorLogic.GenerateAnswear()
+
+        
+        
         // TODO: 2. generate your answear here
         // You need to generate 4 random and non-repeating digits.
         // Some hints: http://stackoverflow.com/q/24007129/938380
     }
     
+
+    
     @IBAction func guess(sender: AnyObject) {
+
         let guessString = guessTextField.text
-        guard guessString?.characters.count == 4 else {
+        let (isRightdigit,isDuplicate) = RefactorLogic.IsGuessRight(guessString!, digit: 4)
+        guard isRightdigit else {
             let alert = UIAlertController(title: "you should input 4 digits to guess!", message: nil, preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             return
+            
         }
+        if isDuplicate {
+            let alert = UIAlertController(title: "you should not put the same digits to guess!", message: nil, preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+            
+        }
+        if guessArray.contains(guessString!){
+            let alert = UIAlertController(title: "you should not guess the same answear!", message: nil, preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }   else {
+            guessArray.append(guessString!)
+        }
+    
         // TODO: 3. convert guessString to the data type you want to use and judge the guess
         
+        let (counterA, counterB) = RefactorLogic.ComparingTwoArray(guessString!, answear: answear)
         
-        // TODO: 4. update the hint
-        let hint = "1A2B"
+
+        let hint = "\(counterA)A\(counterB)B"
         
         hintArray.append((guessString!, hint))
         
         // TODO: 5. update the constant "correct" if the guess is correct
-        let correct = false
+          let correct = counterA == 4 
         if correct {
             let alert = UIAlertController(title: "Wow! You are awesome!", message: nil, preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
@@ -79,10 +108,16 @@ class ViewController: UIViewController, UITableViewDataSource {
         } else {
             remainingTime! -= 1
         }
+        if remainingTime <= 3 {
+            self.remainingTimeLabel.textColor = UIColor.redColor()
+        } else if remainingTime <= 6 {
+            self.remainingTimeLabel.textColor = UIColor.yellowColor()
+        }
+        guessTextField.text?.removeAll()
     }
     @IBAction func showAnswear(sender: AnyObject) {
         // TODO: 6. convert your answear to string(if it's necessary) and display it
-        answearLabel.text = "\(answear)"
+        answearLabel.text = answear
     }
     
     @IBAction func playAgain(sender: AnyObject) {
@@ -105,4 +140,5 @@ class ViewController: UIViewController, UITableViewDataSource {
         return cell
     }
 }
+
 

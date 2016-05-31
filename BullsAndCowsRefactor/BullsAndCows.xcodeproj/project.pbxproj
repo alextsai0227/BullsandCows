@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		039BF4751CFBFABA00685E0D /* GenerateNum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BF4741CFBFABA00685E0D /* GenerateNum.swift */; };
 		D355A4F81CEDF6B40091EC95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D355A4F71CEDF6B40091EC95 /* AppDelegate.swift */; };
 		D355A4FF1CEDF6B40091EC95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D355A4FE1CEDF6B40091EC95 /* Assets.xcassets */; };
 		D355A5021CEDF6B40091EC95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D355A5001CEDF6B40091EC95 /* LaunchScreen.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		039BF4741CFBFABA00685E0D /* GenerateNum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateNum.swift; sourceTree = "<group>"; };
 		D355A4F41CEDF6B40091EC95 /* BullsAndCows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BullsAndCows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D355A4F71CEDF6B40091EC95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D355A4FE1CEDF6B40091EC95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				D355A50B1CEDF6EB0091EC95 /* ViewController.swift */,
 				D355A5001CEDF6B40091EC95 /* LaunchScreen.storyboard */,
 				D355A5031CEDF6B40091EC95 /* Info.plist */,
+				039BF4741CFBFABA00685E0D /* GenerateNum.swift */,
 			);
 			path = BullsAndCows;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D355A50C1CEDF6EB0091EC95 /* ViewController.swift in Sources */,
+				039BF4751CFBFABA00685E0D /* GenerateNum.swift in Sources */,
 				D355A4F81CEDF6B40091EC95 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +284,7 @@
 				D355A5081CEDF6B40091EC95 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
